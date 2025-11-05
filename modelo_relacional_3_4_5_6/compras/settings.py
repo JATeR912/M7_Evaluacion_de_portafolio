@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 import pymysql
 pymysql.install_as_MySQLdb()
 import os
@@ -23,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&cen+o5&j%a72wr=jv^@hhctc1npb*fh-15_daq8+o5iozchvr'
+SECRET_KEY = 'django-insecure-^ld0npnsk#wgj#s$)2j+6m_b@vp3yizilq-c_bd@yy@wr$5nfe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'compras_app',
+    'producto_app',
 ]
 
 MIDDLEWARE = [
