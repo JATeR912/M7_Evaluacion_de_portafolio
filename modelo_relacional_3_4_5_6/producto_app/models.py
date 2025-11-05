@@ -16,6 +16,14 @@ class Cliente(models.Model):
     def __str__(self):
         return self.nombre
 
+class PerfilCliente(models.Model):
+    cliente = models.OneToOneField(Cliente, on_delete=models.CASCADE)
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    direccion = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Perfil de {self.cliente.nombre}"
+
 class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     productos = models.ManyToManyField(Producto)
