@@ -1,0 +1,54 @@
+# IMPORTAR MODELOS
+# =============================================
+from producto_app.models import Producto, Cliente, Pedido, PerfilCliente
+from django.db.models import Count
+from datetime import date
+
+# =============================================
+# 1. FILTRAR PRODUCTOS POR PRECIO
+# Obtiene todos los productos cuyo precio es mayor o igual a 10000.
+# =============================================
+Producto.objects.filter(precio__gte=10000)
+
+# =============================================
+# 2. OBTENER PEDIDOS DE UN CLIENTE ESPECÍFICO
+# Recupera todos los pedidos del cliente con ID = 1.
+# Cambia el ID si es necesario.
+# =============================================
+Pedido.objects.filter(cliente__id=1)
+
+# =============================================
+# 3. PEDIDOS EN UN RANGO DE FECHAS
+# Busca pedidos creados entre dos fechas dadas.
+# =============================================
+Pedido.objects.filter(fecha__range=[date(2025,1,1), date(2025,11,18)])
+
+# =============================================
+# 4. EXCLUIR PRODUCTOS SIN STOCK
+# Devuelve todos los productos cuya cantidad NO es igual a 0.
+# =============================================
+Producto.objects.exclude(cantidad=0)
+
+# =============================================
+# 5. OBTENER PRODUCTOS ASOCIADOS A UN PEDIDO
+# Carga un pedido por ID y lista sus productos.
+# =============================================
+pedido = Pedido.objects.get(id=1)
+pedido.productos.all()
+
+# =============================================
+# 6. CONTAR PEDIDOS REALIZADOS POR CADA CLIENTE
+# Agrega una columna 'total_pedidos' con cuántos pedidos tiene cada cliente.
+# =============================================
+Cliente.objects.annotate(total_pedidos=Count('pedido'))
+
+# =============================================
+# 7. CONSULTA SQL PERSONALIZADA
+# Ejecuta una consulta SQL directa para obtener productos con stock > 0.
+# =============================================
+from django.db import connection
+
+cursor = connection.cursor()
+cursor.execute("SELECT nombre, precio FROM producto_app_producto WHERE cantidad > 0")
+resultados = cursor.fetchall()
+resultados
