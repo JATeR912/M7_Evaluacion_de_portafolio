@@ -1,62 +1,155 @@
-Evaluación de portafolio
-Instrucciones
+# 📁 Proyecto Django – Integración con Bases de Datos
 
-En función de tu proyecto personal previamente establecido, deberás implementar clase a clase las diferentes tecnologías y competencias técnicas adquiridas a lo largo del curso.
+Este proyecto demuestra la integración de Django con bases de datos, la implementación de modelos con y sin relaciones, migraciones, consultas ORM/SQL, una aplicación web MVC/CRUD y el uso de aplicaciones preinstaladas.
 
-Recuerda que este proyecto irá directamente al registro de evidencia de tu portafolio, el cual deberá demostrar el dominio, competencias técnicas y diferentes habilidades relacionadas con la integración de Django con bases de datos.
+El proyecto está organizado en carpetas por cada requerimiento funcional del curso.
 
-Requerimientos Funcionales Mínimos Esperados
+## Estructura de Carpetas y Contenidos
+## 1️⃣ caracteristicas_django_db_1
 
-Describir las características fundamentales de la integración del framework Django con bases de datos.
+Requisito 1 – Características fundamentales de Django con bases de datos
 
-Explicar cómo Django se integra con diferentes sistemas de bases de datos, como SQLite, PostgreSQL o MySQL.
+Explicación de cómo Django se conecta con diferentes motores de base de datos: SQLite, MySQL y PostgreSQL.
 
-Describir cómo Django maneja las conexiones y operaciones con la base de datos a través de su ORM.
+Configuración del archivo settings.py para cada base de datos.
 
-Ejemplo: Explicar cómo configurar el archivo settings.py para conectar Django con una base de datos y cómo se gestionan las conexiones.
+Instalación de los conectores necesarios:
 
-Implementar la capa de modelo de acceso a datos del aplicativo utilizando entidades no relacionadas para dar solución a una problemática.
+- sqlite3 (por defecto)
 
-Crear modelos simples en Django sin relaciones entre ellos, permitiendo la creación de tablas independientes en la base de datos.
+- mysqlclient o PyMySQL para MySQL
 
-Ejemplo: Crear un modelo de Producto con campos básicos como nombre, precio y cantidad, sin relaciones con otras entidades.
+- psycopg2 para PostgreSQL
 
-Implementar la capa de modelo de acceso a datos del aplicativo utilizando entidades con relaciones uno a uno, uno a muchos y muchos a muchos para dar solución a una problemática.
+- Descripción del manejo de conexiones y operaciones mediante el ORM.
 
-Utilizar los tipos de relaciones proporcionados por Django (ForeignKey, OneToOneField, ManyToManyField) para modelar entidades interconectadas.
+Archivos relevantes:
 
-Ejemplo: Crear un modelo de Pedido que tenga una relación de uno a muchos con el modelo Cliente, y una relación de muchos a muchos con el modelo Producto.
+- README.md (documentación detallada de configuraciones y conectores)
 
-Utilizar migraciones para la propagación de cambios al esquema de base de datos acorde al framework Django.
+## 2️⃣ modelo_no_relacionado_2
 
-Ejecutar migraciones para crear y modificar las tablas en la base de datos conforme se realizan cambios en los modelos de datos.
+Requisito 2 – Modelos sin relaciones
 
-Ejemplo: Crear y aplicar migraciones al agregar un nuevo campo en el modelo Producto, propagando esos cambios a la base de datos.
+Implementación de modelos simples de Django sin relaciones entre ellos.
 
-Realizar consultas de filtrado de datos y consultas personalizadas utilizando el ORM y sentencias SQL para recuperación de información de la base de datos acorde al framework Django dando solución a un problema.
+Ejemplo: Modelo Producto con campos básicos (nombre, precio, cantidad, descripcion).
 
-Utilizar el ORM de Django para realizar consultas de filtrado de datos, y crear consultas personalizadas utilizando métodos como filter(), exclude(), get() y annotate().
+Cada modelo representa una tabla independiente en la base de datos.
 
-Ejemplo: Realizar una consulta que recupere todos los pedidos realizados por un cliente específico en un rango de fechas determinado.
+Archivos relevantes:
 
-Implementar una aplicación web MVC que realiza operaciones CRUD en la base de datos utilizando los componentes del framework Django para dar solución a un problema.
+- models.py (con el modelo Producto)
 
-Crear una aplicación Django que implemente las operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en una base de datos.
+- README.md (documentación sobre el modelo y su propósito)
 
-Ejemplo: Crear una aplicación de gestión de productos que permita agregar, listar, editar y eliminar productos de la base de datos.
+## 3️⃣ modelo_relacional_3_4_5_6
 
-Reconocer las aplicaciones preinstaladas con el motor Django distinguiendo su utilidad como apoyo al desarrollo.
+Requisitos 3, 4, 5 y 6 – Modelos relacionales, migraciones, consultas y aplicación MVC/CRUD
 
-Identificar y explicar el propósito de aplicaciones preinstaladas en Django, como django.contrib.admin, django.contrib.auth, django.contrib.sessions, entre otras.
+### ✔ Requisito 3 – Modelos con relaciones
 
-Ejemplo: Configurar y personalizar el panel de administración de Django para gestionar los modelos de la aplicación, como Producto y Pedido.
+Relaciones implementadas:
 
-Entrega
+- Uno a Uno: PerfilCliente → Cliente
 
-Repositorio en GitHub:
+- Uno a Muchos: Pedido → Cliente
 
-Subir todos los archivos del proyecto Django en carpetas organizadas por tema.
+- Muchos a Muchos: Pedido ↔ Producto
 
-Incluir un archivo README.md explicando cómo ejecutar el proyecto, configurar la base de datos y realizar migraciones.
+### ✔ Requisito 4 – Migraciones
 
-Realizar al menos tres commits documentando los cambios realizados en el código.
+Uso de makemigrations y migrate para propagar cambios al esquema de la base de datos.
+
+### ✔ Requisito 5 – Consultas ORM y SQL
+
+Filtrado de datos con filter(), exclude(), get(), annotate().
+
+Consultas SQL personalizadas mediante django.db.connection.cursor.
+
+### ✔ Requisito 6 – Aplicación MVC con CRUD
+
+Implementación de vistas, URLs y templates para:
+
+- Listar productos
+
+- Crear productos
+
+- Editar productos
+
+- Ver detalles
+
+- Eliminar productos
+
+Archivos relevantes:
+
+- models.py (modelos relacionales)
+
+- views.py, urls.py, templates/ (CRUD MVC)
+
+- README.md (ejemplos de consultas y explicación de relaciones)
+
+## 4️⃣ aplicaciones_preinstaladas_7
+
+Requisito 7 – Reconocimiento de aplicaciones preinstaladas de Django
+
+Explicación de la utilidad de las apps preinstaladas:
+
+- django.contrib.admin → administración de modelos
+
+- django.contrib.auth → gestión de usuarios y permisos
+
+- django.contrib.sessions → manejo de sesiones
+
+- Registro de modelos en el panel de administración (admin.site.register) para gestionar datos de manera gráfica.
+
+Archivos relevantes:
+
+- admin.py (registro de modelos)
+
+- README.md (explicación de las aplicaciones y su uso)
+
+## ⚡ Flujo de trabajo recomendado
+
+1. Clonar el repositorio:
+```bash
+git clone <url_del_repositorio>
+cd nombre_proyecto
+```
+
+2. Crear y activar entorno virtual:
+```bash
+python -m venv myenv
+source myenv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
+```
+
+3. Instalar dependencias:
+```bash
+pip install -r requirements.txt
+```
+
+4. Configurar la base de datos en settings.py.
+
+Ejecutar migraciones:
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+5. Crear superusuario para acceder al admin:
+```bash
+python manage.py createsuperuser
+```
+
+6. Ejecutar el servidor:
+```bash
+python manage.py runserver
+```
+## 📝 Notas
+
+Cada carpeta incluye un README.md específico explicando el requisito que cumple.
+
+Se recomienda seguir el orden numérico de carpetas para entender la progresión del proyecto y el uso del ORM.
+
+Todas las consultas ORM se pueden probar directamente en la shell de Django (python manage.py shell).
