@@ -113,7 +113,7 @@ Archivos relevantes:
 
 1. Clonar el repositorio:
 ```bash
-git clone <url_del_repositorio>
+git clone <[url_del_repositorio](https://github.com/JATeR912/M7_Evaluacion_de_portafolio)>
 cd nombre_proyecto
 ```
 
